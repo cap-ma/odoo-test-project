@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_course_form" model="ir.ui.view">
+            <field name="name">educational.course.form</field>
+            <field name="model">educational.course</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                        <notebook>
+                            <page string="Teachers">
+                                <field name="teacher_ids" widget="many2many_tags"/>
+                            </page>
+                            <page string="Groups">
+                                <field name="group_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_course_tree" model="ir.ui.view">
+        <field name="name">educational.course.tree</field>
+        <field name="model">educational.course</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="teacher_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_course" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">educational.course</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_educational" name="Educational Center" sequence="10"/>
+    <menuitem id="menu_course" name="Courses" parent="menu_educational" action="action_course" sequence="10"/>
+</data>
+</odoo>

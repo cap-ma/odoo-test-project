@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_payment_form" model="ir.ui.view">
+            <field name="name">educational.payment.form</field>
+            <field name="model">educational.payment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"  invisible ="state != 'draft'"/>
+                        <button name="action_draft" string="Set to Draft" type="object" invisible ="state != 'confirmed'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="student_id"/>
+                            <field name="group_id"/>
+                            <field name="amount"/>
+                            <field name="date"/>
+                            <field name="note"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_payment_tree" model="ir.ui.view">
+        <field name="name">educational.payment.tree</field>
+        <field name="model">educational.payment</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state == 'draft'" decoration-muted="state == 'confirmed'">
+                <field name="student_id"/>
+                <field name="group_id"/>
+                <field name="amount"/>
+                <field name="date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_payment" model="ir.actions.act_window">
+        <field name="name">Payments</field>
+        <field name="res_model">educational.payment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_payment" name="Payments" parent="menu_educational" action="action_payment" sequence="50"/>
+</data>
+</odoo>

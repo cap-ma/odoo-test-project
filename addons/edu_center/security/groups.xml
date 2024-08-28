@@ -1,0 +1,13 @@
+<odoo>
+    <!-- Educational Super User Group -->
+    <record id="group_educational_administrator" model="res.groups">
+        <field name="name">Educational Administrator</field>
+        <field name="category_id" ref="base.module_category_education"/>
+    </record>
+
+    <!-- Educational Admin Group -->
+    <record id="group_educational_admin" model="res.groups">
+        <field name="name">Educational Admin</field>
+        <field name="category_id" ref="base.module_category_education"/>
+    </record>
+</odoo>
