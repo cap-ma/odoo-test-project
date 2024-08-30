@@ -17,3 +17,7 @@ class Group(models.Model):
             group.total_payments = sum(payment.amount for payment in group.payment_ids if payment.state == 'confirmed')
 
     total_payments = fields.Float(string='Total Payments', compute='_compute_total_payments', store=True)
+
+    @api.model
+    def add_students(self, student_ids):
+        self.write({'student_ids': [(4, student_id) for student_id in student_ids]})

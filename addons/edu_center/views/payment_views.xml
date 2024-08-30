@@ -17,6 +17,7 @@
                             <field name="group_id"/>
                             <field name="amount"/>
                             <field name="date"/>
+                            <field name="check"/>
                             <field name="note"/>
                         </group>
                     </sheet>
@@ -32,6 +33,7 @@
                 <field name="group_id"/>
                 <field name="amount"/>
                 <field name="date"/>
+                <field name="check"/>
                 <field name="state"/>
             </tree>
         </field>

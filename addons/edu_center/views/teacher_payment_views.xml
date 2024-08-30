@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <data>
+<record id="view_educational_teacher_payment_form" model="ir.ui.view">
+    <field name="name">educational.teacher.payment.form</field>
+    <field name="model">educational.teacher.payment</field>
+    <field name="arch" type="xml">
+        <form>
+            <header>
+                <button name="action_confirm" string="Confirm" type="object"   context="{'state': 'draft'}" class="oe_highlight"/>
+                <button name="action_draft" string="Set to Draft" type="object"   context="{'state': 'confirmed'}"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+            </header>
+            <sheet>
+                <group>
+                    <field name="teacher_id"/>
+                    <field name="amount"/>
+                    <field name="date"/>
+                    <field name="note"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="view_educational_teacher_payment_tree" model="ir.ui.view">
+    <field name="name">educational.teacher.payment.tree</field>
+    <field name="model">educational.teacher.payment</field>
+    <field name="arch" type="xml">
+        <tree decoration-info="state == 'draft'" decoration-muted="state == 'confirmed'">
+            <field name="teacher_id"/>
+            <field name="amount" sum="Total"/>
+            <field name="date"/>
+            <field name="state"/>
+        </tree>
+    </field>
+</record>
+
+<record id="view_educational_teacher_payment_search" model="ir.ui.view">
+    <field name="name">educational.teacher.payment.search</field>
+    <field name="model">educational.teacher.payment</field>
+    <field name="arch" type="xml">
+        <search>
+            <field name="teacher_id"/>
+            <field name="date"/>
+            <filter string="Draft" name="draft" domain="[('state','=','draft')]"/>
+            <filter string="Confirmed" name="confirmed" domain="[('state','=','confirmed')]"/>
+            <group expand="0" string="Group By">
+                <filter string="Teacher" name="group_by_teacher" context="{'group_by':'teacher_id'}"/>
+                <filter string="State" name="group_by_state" context="{'group_by':'state'}"/>
+            </group>
+        </search>
+    </field>
+</record>
+<record id="action_teacher_payment" model="ir.actions.act_window">
+    <field name="name">Teacher Payments</field>
+    <field name="res_model">educational.teacher.payment</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+
+
+<menuitem id="menu_educational" name="Educational Center" sequence="10"/>
+<menuitem id="menu_teacher_payment" name="Teacher Payments" action="action_teacher_payment" parent="menu_educational" sequence="70"/>
+</data>
+
+</odoo>

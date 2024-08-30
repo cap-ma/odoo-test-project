@@ -9,3 +9,4 @@ class Teacher(models.Model):
     contact_info = fields.Text(string='Contact Information')
     course_ids = fields.Many2many('educational.course', string='Courses')
     group_ids = fields.One2many('educational.group', 'teacher_id', string='Groups')
+    teacher_payments_id = fields.One2many('educational.teacher.payment', 'teacher_id', string='Payments')

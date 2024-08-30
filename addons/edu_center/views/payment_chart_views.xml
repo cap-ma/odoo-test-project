@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View -->
+        <record id="view_educational_payment_chart_form" model="ir.ui.view">
+            <field name="name">educational.payment.chart.form</field>
+            <field name="model">educational.payment.chart</field>
+            <field name="arch" type="xml">
+                <form js_class="payment_chart_form">
+                    <sheet>
+                        <group>
+                            <field name="chart_start_date"/>
+                            <field name="chart_end_date"/>
+                            <field name="chart_data" widget="text" invisible="1"/>
+                        </group>
+                        <div>
+                            <button name="load_chart_data" string="Load Chart Data" type="object" class="oe_highlight"/>
+                        </div>
+                        <div id="payment_chart_div" style="width: 100%; height: 500px;"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View -->
+        <record id="view_educational_payment_chart_tree" model="ir.ui.view">
+            <field name="name">educational.payment.chart.tree</field>
+            <field name="model">educational.payment.chart</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="chart_start_date"/>
+                    <field name="chart_end_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_educational_payment_chart_search" model="ir.ui.view">
+            <field name="name">educational.payment.chart.search</field>
+            <field name="model">educational.payment.chart</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="chart_start_date"/>
+                    <field name="chart_end_date"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_payment_chart" model="ir.actions.act_window">
+            <field name="name">Payment Chart</field>
+            <field name="res_model">educational.payment.chart</field>
+            <field name="view_mode">form,tree</field>
+        </record>
+
+        <!-- Menu Item -->
+        <menuitem id="menu_educational" name="Educational Center" sequence="10"/>
+        <menuitem id="menu_payment_chart" name="Payment Chart" action="action_payment_chart" parent="menu_educational" sequence="60"/>
+
+    </data>
+</odoo>

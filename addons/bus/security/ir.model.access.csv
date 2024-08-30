@@ -1,4 +1,11 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_bus_bus,bus.bus public,model_bus_bus,,0,0,0,0
-access_bus_presence,bus.presence,model_bus_presence,base.group_user,1,1,1,1
-access_bus_presence_portal,bus.presence,model_bus_presence,base.group_portal,1,1,1,1
+access_educational_course_administrator,educational.course.administrator,edu_center.model_educational_course,group_educational_administrator,1,1,1,0
+access_educational_teacher_administrator,educational.teacher.administrator,edu_center.model_educational_teacher,group_educational_administrator,1,1,1,0
+access_educational_student_administrator,educational.student.administrator,edu_center.model_educational_student,group_educational_administrator,1,1,1,0
+access_educational_group_administrator,educational.group.administrator,edu_center.model_educational_group,group_educational_administrator,1,1,1,0
+access_educational_payment_administrator,educational.payment.administrator,edu_center.model_educational_payment,group_educational_administrator,1,1,1,0
+access_educational_course_admin,educational.course.admin,edu_center.model_educational_course,group_educational_admin,1,1,1,1
+access_educational_teacher_admin,educational.teacher.admin,edu_center.model_educational_teacher,group_educational_admin,1,1,1,1
+access_educational_student_admin,educational.student.admin,edu_center.model_educational_student,group_educational_admin,1,1,1,1
+access_educational_group_admin,educational.group.admin,edu_center.model_educational_group,group_educational_admin,1,1,1,1
+access_educational_payment_admin,educational.payment.admin,edu_center.model_educational_payment,group_educational_admin,1,1,1,1
